@@ -1,0 +1,91 @@
+---
+title: "demo1_BME590"
+author: "Arinze"
+date: "8/21/2020"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Lecture 1 - In class demonstration & problems
+
+In this demonstration, we will explore a simple dataset from: https://www.kaggle.com/laurae2/data-scientists-vs-size-of-datasets/downloads/data-scientists-vs-size-of-datasets.zip/1
+
+This research study was conducted to analyze the (potential) relationship between hardware and data set sizes. 100 data scientists from France between Jan-2016 and Aug-2016 were interviewed in order to have exploitable data. Therefore, this sample might not be representative of the true population.
+
+For the data, it uses the following fields (DS = Data Scientist, W = Workstation):
+
+DS_1 = Are you working with "large" data sets at work? (large = over 1 billion values) => Yes or No<br />
+DS_2 = Do you enjoy working with large data sets? => Yes or No<br />
+DS_3 = Would you rather have small, medium, or large data sets for work? => Small, Medium, or Large<br />
+DS_4 = Do you have any presence at Kaggle or any other Data Science platforms? => Yes or No<br />
+DS_5 = Do you view yourself proficient at working in Data Science? => Yes, A bit, or No<br />
+W_1 = What is your CPU brand? => Intel or AMD<br />
+W_2 = Do you have access to a remote server to perform large workloads? => Yes or No<br />
+W_3 = How much Euros would you invest in Data Science brand new hardware? => numeric output, rounded by 100s<br />
+W_4 = How many cores do you have to work with data sets? => numeric output<br />
+W_5 = How much RAM (in GB) do you have to work with data sets? => numeric output<br />
+W_6 = Do you do GPU computing? => Yes or No <br />
+W_7 = What programming languages do you use for Data Science? => R or Python (any other answer accepted) <br />
+W_8 = What programming languages do you use for pure statistical analysis? => R or Python (any other answer accepted) <br />
+W_9 = What programming languages do you use for training models? => R or Python (any other answer accepted) <br />
+```{r}
+#setwd("mydirectory")
+data <- read.csv("C:/Users/Public/machine_learning/Biomedical_data_explore/data/data_scientist_survey.csv",
+         header = TRUE, stringsAsFactors = TRUE)
+data
+```
+
+## In Class Practice Questions
+
+Q1: What percent of the data scientists surveyed here use Intel brand CPUs?
+```{r}
+(nrow(data[data$W_1=="Intel",])/nrow(data))*100
+```
+
+Q2: In the self-evaluation of proficiency, which of the possible classes in the data library is not represented in the actual data?
+```{r}
+levels(data$DS_5)
+#Answer= "A bit"
+```
+
+Q3: What is the median number of cores that the Data Scientists have to work with?
+```{r}
+summary(data)
+#Answer=2
+```
+
+Q4: What percent of data scientsts in the US work with "large" datasets?
+```{r}
+#This data is for data scientists from France, so not applicable.
+```
+
+## Let's visualize the data
+
+```{r}
+#new plots learned include floating bar plots, waterfall plots etc
+```
